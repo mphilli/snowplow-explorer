@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset=UTF-8" />
+	<title>Syracuse Snowplow Data Explorer</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<header id="main-title">Syracuse Snowplow Data Explorer</header>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About the Project</a></li>
+				<li><a href="http://github.com/mphilli/snowplow-explorer">Source Code</a></li>
+				<li><a href="/api">API Mode</a></li>
+			</ul>
+		</nav>
+	</header>
+    <br>
+	<br>
+	<div id="left-container">
+		<div id="data-entry">
+			{% if from_string is not none %}
+			<button id="back-button" onclick="process_from()">Load last search</button>
+			{% endif %}
+		<span class="input-label">Select a day: </span>
+		<select id="date-select">
+			<!--normally wouldn't hardcode but date choice is relatively small -->
+			<option value="03/13/2017">3/13/2017</option>
+			<option value="03/14/2017">3/14/2017</option>
+			<option value="03/15/2017">3/15/2017</option>
+			<option value="03/16/2017">3/16/2017</option>
+			<option value="01/01/2018">1/1/2018</option>
+			<option value="01/02/2018">1/2/2018</option>
+			<option value="01/04/2018">1/4/2018</option>
+			<option value="01/06/2018">1/6/2018</option>
+			<option value="01/07/2018">1/7/2018</option>
+			<option value="01/08/2018">1/8/2018</option>
+			<option value="01/09/2018">1/9/2018</option>
+		</select>
+			<br>
+		<span class="input-label">Time Range: </span>
+		Between <input id="start" type="time"> and <input id="end" type="time">
+		<br>
+		<span id="street-name" class="input-label">Street: </span><input id="street" type="text"> (Optional)
+			<br><button id="enter" onclick="load_data()">Enter</button>
+		{% if data_table is not none %}
+			<br>
+			Filter (by street & activity): <input type="text" id="data-filter" onkeyup="filterTable();">
+			<br>
+
+		<div id="table-data">{{ data_table }}</div>
+		<button onclick="exportTableToCSV('explorer_plow_data.csv')">Export Full Table to CSV</button>
+		{% endif %}
+		</div>
+	</div>
+	<div id="right-container">
+	{% if data_table is not none %}
+    <iframe src="{{ url_for('show_map') }}"></iframe>
+	{% else %}
+	<iframe src="{{ url_for('show_default_map') }}"></iframe>
+	{% endif %}
+	</div>
+		<script>
+			var start = document.getElementById("start").value;
+			var end = document.getElementById("end").value;
+			console.log(start == "" && end == "");
+			if (start == "" && end == "") {
+			    document.getElementById("start").value = "00:00";
+
+			    document.getElementById("end").value = "06:00";
+			}
+		</script>
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

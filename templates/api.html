@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Mode - Snowplow Explorer</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<header id="main-title">Syracuse Snowplow Data Explorer</header>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About the Project</a></li>
+				<li><a href="http://github.com/mphilli/snowplow-explorer">Source Code</a></li>
+				<li><a href="/api">API Mode</a></li>
+			</ul>
+		</nav>
+	</header>
+    <br>
+    <br>
+    <div id="middle-container">
+        <h3 style="color: darkorange">API Mode</h3>
+    <p>The snowplow data in this project has been structured in a unique way -- parsed according to truck shifts, and partitioned
+    into "sessions" according to GPS tracker inactivity.
+    If you would like to take advantage of the way this tool retrieves data, you can make GET requests
+        to the API and retrieve just the raw data used to create the maps and tables.
+
+    The following image shows an example of JSON output for data from session 1 in the database (in Firefox):</p>
+        <img id="api-img" src="static/images/example4.png">
+
+        <p>The "Map data" attribute corresponds to each session id and the coordinates used to plot that session, while the
+        "Table data" attribute contains data for each row that would normally appear in the output table.</p>
+        <p>Performing the API requests depends on the URL structure. From the base URL of the app, the first subdomain should be
+        "api", and the second should either be "interval" for viewing all sessions within a timeframe or "session" for viewing a single session. For example,
+        if you are running the app locally and want to retrieve the data for the first session, then you should perform a GET request on
+            <a href="http://127.0.0.1:5000/api/session/1">http://127.0.0.1:5000/api/session/1</a></p>
+        <p>URLs for interval data are of the form <b>api/interval/date/start_time/end_time/street</b>. Only the street parameter is optional.
+        Dates and times must be formatted in the following way:
+        <br><br>Date: MM-DD-YYYY
+        <br>Time: HH-MM<br><br>
+            So for example, if you'd like to fetch JSON data for January 4th, 2018 between the hours of 6:00 AM and 12:00 PM, the URL for the GET request should be:
+           <a href="http://127.0.0.1:5000/api/interval/01-04-2018/06-00/12-00/">http://127.0.0.1:5000/api/interval/01-04-2018/06-00/12-00/</a>
+        </p>
+
+        <p>
+            To summarize, valid URLs are of these forms:
+            <br>&lt;domain&gt;/api/session/&lt;session_id&gt;
+            <br>&lt;domain&gt;/api/interval/&lt;date&gt;/&lt;start_time&gt;/&lt;end_time&gt;
+        </p>
+        <p>The following code block shows an example usage of the API, using a few lines of Python fetch the times and activities
+            for session 468 <i>(truck 265 on 3/16/2017)</i> on Water St:</p>
+            <img src="static/images/example5.png">
+        <p>which outputs the following:
+            <center>
+        04:21:26 PM, Stop Moving
+        <br>04:21:43 PM, Start Moving
+        <br>04:26:30 PM, Stop Moving
+        <br>04:26:49 PM, Start Moving
+        <br>04:27:11 PM, Stop Moving
+        <br>04:27:45 PM, Start Moving
+        <br>04:28:31 PM, Stop Moving
+        <br>04:29:02 PM, Start Moving
+        <br>04:29:59 PM, Stop Moving
+        <br>04:30:27 PM, Start Moving
+        </center>
+        </p>
+    </div>
+</body>
+</html>

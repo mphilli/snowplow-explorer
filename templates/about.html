@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset=UTF-8" />
+	<title>Syracuse Snowplow Data Explorer</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<header id="main-title">Syracuse Snowplow Data Explorer</header>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About the Project</a></li>
+				<li><a href="http://github.com/mphilli/snowplow-explorer">Source Code</a></li>
+				<li><a href="/api">API Mode</a></li>
+			</ul>
+		</nav>
+	</header>
+    <br>
+	<br>
+	<div id="middle-container">
+		<h2>About the Project</h2>
+		<nav>
+			<ul>
+				<li><a href="#purpose">Purpose of the Project</a></li>
+				<li><a href="#usage">How to use (with examples and pictures)</a></li>
+				<li><a href="#api">API mode</a></li>
+				<li><a href="#data">About the data</a></li>
+				<li><a href="#me">About me</a></li>
+			</ul>
+		</nav>
+		<br>
+
+		<h3><a name="purpose">Purpose of the project</a></h3>
+		<p>The city of Syracuse has publicly released GPS tracker data for Syracuse snowplows, which reveals
+			the location and activity of the plows over a set number of days. The public was then
+			encouraged, via a hackathon entitled <b>
+				<a href="https://ischool.syr.edu/landing-pages/civic-hackathon-plowing-through-the-data">
+					The Civic Hackathon: Plowing Through the Data, Powered by AT&T</a></b>,
+			to create tools that help us to understand the data so that we can optimize our city's snow removal process.
+		</p>
+		<p>This project, the <b>Syracuse Snowplow Data Explorer</b>, is designed to be the ultimate exploration tool
+			for the snow plow GPS data. This program runs as a Python <a href="http://flask.pocoo.org/">Flask</a>
+			web app, and works by taking in search queries (day, time, location) and generating map visualizations of
+			the truck routes throughout Syracuse, as well as a (searchable) table that shows each recorded GPS activity
+			from the data that match the search parameters.</p>
+		<p>To view the code for the project and see installation instructions, please visit the <a href="http://github.com/mphilli/snowplow-explorer">GitHub repository</a>.</p>
+		<h3><a name="usage">Usage (with examples)</a></h3>
+		<p>
+		First, it is worth knowing that the data is organized and plotted in terms of <i>sessions</i>, so it will be
+		important to understand what that is. A <b>session</b> is defined as a <i>continuous period of GPS activity from
+		a single truck</i>. If the truck's GPS tracker has been inactive for a period longer than 15 minutes, then the session ends, and a new session
+			will be created should the same truck appear again later in the data. This "inactivity partition" is meant to capture the shifts of the snowplows throughout the day.
+		</p>
+		<p>
+			<b>Available search parameters:</b>
+			<br><br>
+			<b>Select a day:</b> This search parameter is for choosing which day you'd like to see data for, among
+				the 11 days of data provided by the city. Searches are limited to one day, as plotting data for multiple
+			days is not recommended (sessions get plotted on top of each other and the map becomes progressively less useful).
+			<br><br>
+				<b>Time Range:</b> This search parameter requires two pieces: a start time and an end time. The default
+				start time is 12:00 AM, and the default end time is 6:00 AM (if none are provided). This will return all
+				snow plow data that occurs between this interval.
+			<br><br>
+			<b>Street</b>	This optional search parameter will only plot sessions that came in contact with the street
+			you specify. <b>Important note:</b> The data table will only show data that match the street specified,
+			<b>not</b> data for the entire session (or sessions) like usual.
+		</p>
+		<p>The following image shows an example output of search for data between 4 AM and 11 AM on 1/1/2018. This should
+			capture any snowplow session that overlapped with this time period:</p>
+		<img src="static/images/example1.png">
+		<br>
+		<p>Each color represents a different session; colors are randomly generated for each search to help differentiate
+		the truck shifts. Clicking on a plotted line on the map reveals a data label, which reveals the truck name, date,
+		time, and the full length of that session (based on that sessions start and end time, not your search).
+		Notice that we can tell which neighborhoods were sufficiently plowed during this time, versus those that were not.
+		<br>
+		If you want to just see a particular full session in isolation, click on "view full session" in the data label.
+		The following image shows the result of the full session specified in the first image:</p>
+		<img src="static/images/example2.png">
+		<br>
+		<p>If you click on "(include markers)", to the right of "view full session", the same session is plotted, but with
+		activity markers, which reveal the times and activities at different locations, as seen here:</p>
+		<img src="static/images/example23.png">
+		<p>Note that when you are viewing a single session, a button appears on the page called "Load last search", which
+			will bring you back to your most recent search query (just pressing the back button doesn't reload the map iframe).</p>
+		<p>Each time we plot a new map, a new table is also generated that displays all the GPS activity from the data.
+		The tables can be further filtered by searching street names and activity (start moving, spreader on, etc). The
+		following image shows a snippet of the data table from the session above, filtered by the search term "Cayuga":</p>
+		<img class="table-view" src="static/images/example3.png">
+		<p>This shows that this truck plowed Cayuga street around 8-8:30 AM.
+			 Of course, if we wanted to see just results for Cayuga St, we could've added that to our initial search query,
+			but the data table will always be searchable itself! Clicking on the session ID will bring you to the same
+			page as when you click the "view full session" link from the map (plots a full session in isolation).
+		</p>
+		<p>At the bottom of the data table is a button that allows you to export the data from your query as a CSV file.</p>
+		<h3><a name="api">API mode</a></h3>
+			<p>The API mode outputs the same data used to create the plotted visuals and data tables, but returns the data
+			in raw JSON format. This allows you to fetch data using the search tool and incorporate the data into other
+				applications. To read more about using the API mode, see the <a href="/api">API mode home page.</a></p>
+		<h3><a name="data">About the data</a></h3>
+			<p>The data for each day was taken from <a href="http://data.syrgov.net/datasets?q=hackathon">data.syrgov.net</a>, placed into a single CSV file (plowdata.csv in the resources directory), and converted into an SQLite
+		database. As explained above, the data has been partitioned into "sessions" based on the activity of a single truck, and the session stops after 15 minutes of inactivity.</p>
+			<p>The data was cleaned in a few ways. First of all, any sessions with less than 50 rows of data (GPS activity) are deleted; this is to purge the data of false-sessions, which
+			is usually just data of the GPS tracker at the Public Works building on Canal St (the home base of the snowplows). Since there is a surplus of data that occurs at that location, all data with the address "Canal St" was deleted during the data-cleaning process,
+				although the data could still definitely be cleaned further.</p>
+
+			<p>If you dislike the way that the data was prepared, the SQLite "sessions" table (upon which the app relies) can be recreated at anytime by running the
+				<code>reset_data.py</code> script in the PlowDataPlotter/scripts directory. To run the script, navigate to the scripts directory in the terminal, and execute the code:</p>
+				<code>python reset_data.py -tg X -purge Y</code><br>
+				<p>The <code>-tg</code> parameter adjusts the partition of inactivity for the sessions (the default value for X is 15 (minutes)). So, for example, if you type <code>-tg 10</code>,
+					this will make it so that a session ends if a truck has been inactive for 10 minutes.
+				The <code>-purge</code> parameter determines which sessions will be deleted from the database, for only having Y or less rows of data (Y = 50 by default).</p>
+
+		<h3><a name="me">About me</a></h3>
+		<p>My name is Michael Phillips, and I'm a full-time graduate student at Syracuse University, obtaining my MS in Computational Lingusitics. I've lived in the Syracuse area all my life,
+		and I'm excited to contribute to the understanding of our city's snow removal process. I tried my best to provide good instructions and good features for my project, that it may be
+		genuinely useful in exploring and understanding the GPS data.</p>
+		<br>
+		</div>
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

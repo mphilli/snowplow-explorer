@@ -1,0 +1,195 @@
+body {
+ color: #DEDEDE;
+ background-image: url("images/fall_leaves.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-color: #212121;
+ text-align: center;
+ position: relative;
+     font-family: 'Nunito', sans-serif;
+    font-size: 110%;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+a:visited{
+  color: blue;
+}
+
+a {
+  color: blue;
+}
+
+h2 {
+margin: 0;
+}
+
+#main-title {
+    background-color: #D44500;
+    color: white;
+    font-size: 150%;
+    padding: 10px;
+}
+
+nav {
+    background-color:#212121;
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding: 0;
+    text-align:center;
+}
+nav li {
+    border 1px solid;
+    display:inline;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 110%;
+}
+nav a {
+    display:inline-block;
+    color: white !important;
+}
+
+nav li:hover {
+    background-color: black;
+}
+
+#left-container {
+float: left;
+text-align: left;
+width: 50%;
+height: 80%;
+display: flex;
+}
+
+#data-entry {
+    float: none;
+    margin: 0 auto;
+    width: 95%;
+    height: 100%;
+    background-color: #ADB3B8;
+    color: #3E3D3C !important;
+    display: inline-block;
+    overflow: auto;
+
+}
+
+#table-data {
+height: 69%;
+overflow-y: scroll;
+font: 85% !important;
+background-color: #D44500; /*Syracuse orange*/
+}
+
+#table-data a{
+    color: #D44500;
+}
+table, th, td {
+    border: 2px solid #3E3D3C;
+    padding: 3px;
+    font-size: 85% !important;
+    color: white;
+}
+
+td, th {
+background-color: #E8EAEB !important;
+color: #3E3D3C !important;
+}
+
+#back-button {
+    float: right;
+    margin: 4px;
+}
+
+th {
+    text-align: center;
+    font-size: 100% !important;
+    font-weight: normal !important;
+}
+
+.session-id {
+    text-align: center;
+}
+
+/*
+.session-id a {
+    color: white;
+}
+*/
+
+#right-container {
+float: right;
+width: 50%;
+height: 80%;
+}
+
+#middle-container {
+    /*container div for about and api page*/
+    margin: 0 auto;
+    width: 65%;
+    color: black !important;
+    background-color: white !important;
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.input-label {
+    font-size: 110%;
+}
+
+footer {
+    float: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+iframe {
+    border: none;
+    width: 94%;
+    height: 94%;
+}
+
+p {
+    text-align: justify;
+    width: 75%;
+    padding: 10px;
+    font-size: 90% !important;
+    margin: 0 auto;
+}
+
+h3 {
+   text-decoration: underline;
+   text-decoration-color: #D44500;
+   font-weight: bold;
+}
+
+img {
+    height: 50% !important;
+    width: 50% !important;
+}
+
+#api-img {
+    width: 30% !important;
+}
+
+img.table-view {
+    height: 60% !important;
+    width: 60% !important;
+}
+
+#middle-container a {
+    color: #D44500;
+}
+
+#enter {
+    margin: 8px;
+     width: 70px;
+     height: 30px;
+}
