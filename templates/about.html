@@ -72,7 +72,7 @@
 		</p>
 		<p>The following image shows an example output of search for data between 4 AM and 11 AM on 1/1/2018. This should
 			capture any snowplow session that overlapped with this time period:</p>
-		<img src="static/images/example1.png">
+		<img src="{{ url_for('static', filename='images/example1.PNG') }}">
 		<br>
 		<p>Each color represents a different session; colors are randomly generated for each search to help differentiate
 		the truck shifts. Clicking on a plotted line on the map reveals a data label, which reveals the truck name, date,
@@ -81,17 +81,17 @@
 		<br>
 		If you want to just see a particular full session in isolation, click on "view full session" in the data label.
 		The following image shows the result of the full session specified in the first image:</p>
-		<img src="static/images/example2.png">
+		<img src="{{ url_for('static', filename='images/example2.PNG') }}">
 		<br>
 		<p>If you click on "(include markers)", to the right of "view full session", the same session is plotted, but with
 		activity markers, which reveal the times and activities at different locations, as seen here:</p>
-		<img src="static/images/example23.png">
+		<img src="{{ url_for('static', filename='images/example23.PNG') }}">
 		<p>Note that when you are viewing a single session, a button appears on the page called "Load last search", which
 			will bring you back to your most recent search query (just pressing the back button doesn't reload the map iframe).</p>
 		<p>Each time we plot a new map, a new table is also generated that displays all the GPS activity from the data.
 		The tables can be further filtered by searching street names and activity (start moving, spreader on, etc). The
 		following image shows a snippet of the data table from the session above, filtered by the search term "Cayuga":</p>
-		<img class="table-view" src="static/images/example3.png">
+		<img class="table-view" src="{{ url_for('static', filename='images/example3.PNG') }}">
 		<p>This shows that this truck plowed Cayuga street around 8-8:30 AM.
 			 Of course, if we wanted to see just results for Cayuga St, we could've added that to our initial search query,
 			but the data table will always be searchable itself! Clicking on the session ID will bring you to the same

@@ -29,7 +29,7 @@
         to the API and retrieve just the raw data used to create the maps and tables.
 
     The following image shows an example of JSON output for data from session 1 in the database (in Firefox):</p>
-        <img id="api-img" src="static/images/example4.png">
+        <img id="api-img" src="{{ url_for('static', filename='images/example4.PNG') }}">
 
         <p>The "Map data" attribute corresponds to each session id and the coordinates used to plot that session, while the
         "Table data" attribute contains data for each row that would normally appear in the output table.</p>
@@ -52,7 +52,7 @@
         </p>
         <p>The following code block shows an example usage of the API, using a few lines of Python fetch the times and activities
             for session 468 <i>(truck 265 on 3/16/2017)</i> on Water St:</p>
-            <img src="static/images/example5.png">
+            <img src="{{ url_for('static', filename='images/example5.PNG') }}">
         <p>which outputs the following:
             <center>
         04:21:26 PM, Stop Moving
