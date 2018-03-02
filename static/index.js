@@ -10,6 +10,11 @@ window.loadsession = function(sess, marker) {
         var base_url = pathArray[0] + "//" + pathArray[2] + "/";
         if (pathArray.length > 3) {
 			var date = pathArray[4];
+			if (date == "markers") {
+			    location.href = "/session/" + pathArray[5];
+			} else if (!isNaN(date)) {
+			    location.href = "/session/" + pathArray[4];
+			} else {
 			var start = pathArray[5];
 			var end = pathArray[6];
 			var url = base + sess + "/from";
@@ -18,9 +23,11 @@ window.loadsession = function(sess, marker) {
             	url = url + pathArray[7];
             }
             location.href = url;
+            }
         } else {
         	location.href = base + sess;
         }
+
 }
 
 
