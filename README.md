@@ -4,7 +4,7 @@
 ###### by Michael G. Phillips, 3/1/2018
 
 
-<img src="static/images/example.PNG" width="50%" height="50%">
+<img src="static/images/example.PNG" width="65%" height="65%">
 
 
 The following project is my submission for the Syracuse "Plowing Through the Data" hackathon, which encourages
@@ -29,7 +29,7 @@ With this app, you can:
 
 The program runs as a Python (Flask) web app. As such, the following needs to be in order:
 
-* Install Python 3 (and ensure it is on your path)
+* Install Python (3.5+) (and ensure it is on your path)
 * Install the requirements ([Flask](http://flask.pocoo.org/), 
                              [folium](https://github.com/python-visualization/folium), 
                              [dateutil](https://dateutil.readthedocs.io/en/stable/)) 
