@@ -42,3 +42,12 @@ by navigating to the project directory in the terminal and typing
 
 The program should now be running locally at `http://127.0.0.1:5000/` -- open any web browser to view. See the "about" page
 for usage instructions and examples.
+
+#### Edit:
+
+This project placed 2nd ($2,000) in the *Plowing through the Data* Hackathon! 
+
+News Articles: 
+* [iSchool News](https://ischool.syr.edu/articles/news/view/winners-of-plowing-through-the-data-hackathon-announced/)
+* [syracuse.com](http://www.syracuse.com/news/index.ssf/2018/03/syracuse_university_civic_hackathon_winners_announced.html)
+* [Syracuse University News](https://news.syr.edu/2018/03/winners-of-plowing-through-the-data-hackathon-announced/)
