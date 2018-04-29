@@ -1,11 +1,19 @@
 ### Syracuse Snowplow Data Explorer
 
-##### A Python 3 app for exploring snowplow GPS data in Syracuse, NY
-###### by Michael G. Phillips, 3/1/2018
+##### A Python 3 web app for exploring snowplow GPS data in Syracuse, NY
+###### by Michael G. Phillips, March 2018
 
 
-<img src="static/images/example.PNG" width="65%" height="65%">
+<img src="static/images/example.PNG" width="75%" height="65%">
 
+### Edit:
+
+This project placed 2nd ($2,000) in the *Plowing through the Data* Hackathon! 
+
+News Articles: 
+* [iSchool News](https://ischool.syr.edu/articles/news/view/winners-of-plowing-through-the-data-hackathon-announced/)
+* [syracuse.com](http://www.syracuse.com/news/index.ssf/2018/03/syracuse_university_civic_hackathon_winners_announced.html)
+* [Syracuse University News](https://news.syr.edu/2018/03/winners-of-plowing-through-the-data-hackathon-announced/)
 
 The following project is my submission for the Syracuse "Plowing Through the Data" hackathon, which encourages
 the community to make interesting tools to explore our city's snow plow data, so that we can better understand 
@@ -43,11 +51,4 @@ by navigating to the project directory in the terminal and typing
 The program should now be running locally at `http://127.0.0.1:5000/` -- open any web browser to view. See the "about" page
 for usage instructions and examples.
 
-#### Edit:
-
-This project placed 2nd ($2,000) in the *Plowing through the Data* Hackathon! 
-
-News Articles: 
-* [iSchool News](https://ischool.syr.edu/articles/news/view/winners-of-plowing-through-the-data-hackathon-announced/)
-* [syracuse.com](http://www.syracuse.com/news/index.ssf/2018/03/syracuse_university_civic_hackathon_winners_announced.html)
-* [Syracuse University News](https://news.syr.edu/2018/03/winners-of-plowing-through-the-data-hackathon-announced/)
+A copy of the project also runs for free at [http://mgphilli.pythonanywhere.com](http://mgphilli.pythonanywhere.com).
